@@ -1,0 +1,281 @@
+[
+    {
+        "biomeId": "frozen_ocean",
+        "defaultDecimalColor": -8342377,
+        "seasonColors": ["0x80B497", "0xFCD746", "0xF6B07E", "0xFCFFFC"]
+    },
+    {
+        "biomeId": "windswept_hills",
+        "defaultDecimalColor": -7686519,
+        "seasonColors": ["0x8AB689", "0xB1C66A", "0xB1C633", "0xD0C698"]
+    },
+    {
+        "biomeId": "ocean",
+        "defaultDecimalColor": -7423631,
+        "seasonColors": ["0x8EB971", "0xCAE94A", "0xCAE94A", "0xD8DA92"]
+    },
+    {
+        "biomeId": "swamp",
+        "defaultDecimalColor": 6975545,
+        "seasonColors": ["0x6A7039", "0x6A9235", "0x6A5A39", "0x6A7051"]
+    },
+    {
+        "biomeId": "beach",
+        "defaultDecimalColor": -7226023,
+        "seasonColors": ["0x91BD59", "0xC4C165", "0xFFCA3B", "0xE3D27D"]
+    },
+    {
+        "biomeId": "mushroom_fields",
+        "defaultDecimalColor": -11155137,
+        "seasonColors": ["0x55C93F", "0x69705D", "0x69705D", "0x458F31"]
+    },
+    {
+        "biomeId": "snowy_beach",
+        "defaultDecimalColor": -8145517,
+        "seasonColors": ["0x83B593", "0xEDD675", "0xCD7C41", "0xF8F1DD"]
+    },
+    {
+        "biomeId": "taiga",
+        "defaultDecimalColor": -7948413,
+        "seasonColors": ["0x86B783", "0x4F8A4A", "0x6A9235", "0x8A9A8A"]
+    },
+    {
+        "biomeId": "meadow",
+        "defaultDecimalColor": -8144019,
+        "seasonColors": ["0x83BB6D", "0xABD278", "0xFFA92F", "0xC19E59"]
+    },
+    {
+        "biomeId": "cherry_grove",
+        "defaultDecimalColor": -4793503,
+        "seasonColors": ["0xB6DB61", "0x9BE961", "0xD3C461", "0xD7C479"]
+    },
+    {
+        "biomeId": "birch_forest",
+        "defaultDecimalColor": -7816346,
+        "seasonColors": ["0x88BB66", "0xEBF655", "0xFFC72F", "0xD3CE8E"]
+    },
+    {
+        "biomeId": "jungle",
+        "defaultDecimalColor": -10892996,
+        "seasonColors": ["0x59C93C", "0x89EE34", "0x6BBB29", "0x6EBE29"]
+    },
+    {
+        "biomeId": "sparse_jungle",
+        "defaultDecimalColor": -10172609,
+        "seasonColors": ["0x64C73F", "0x9CB93F", "0xB6B93F", "0x68A525"]
+    },
+    {
+        "biomeId": "stony_peaks",
+        "defaultDecimalColor": -6635957,
+        "seasonColors": ["0x9ABE4B", "0xCABE4B", "0xCAD34B", "0x86A937"]
+    },
+    {
+        "biomeId": "desert",
+        "defaultDecimalColor": -4212907,
+        "seasonColors": ["0xBFB755", "0xF6DB6A", "0xF3E664", "0x89AE36"]
+    },
+    {
+        "biomeId": "forest",
+        "defaultDecimalColor": -8798118,
+        "seasonColors": ["0x79C05A", "0xABD278", "0xFF982F", "0xE6CE7E"]
+    },
+    {
+        "biomeId": "dark_forest",
+        "defaultDecimalColor": 5274162,
+        "seasonColors": ["0x507A32", "0x38621B", "0xBE891B", "0x815800"]
+    },
+    {
+        "biomeId": "badlands",
+        "defaultDecimalColor": -7306931,
+        "seasonColors": ["0x90814D", "0xC4B37D", "0x97C088", "0x5A814D"]
+    },
+    {
+        "biomeId": "old_growth_pine_taiga",
+        "defaultDecimalColor": -7948161,
+        "seasonColors": ["0x86B87F", "0xACC13A", "0xF9DD3B", "0xE9DC9A"]
+    },
+    {
+        "biomeId": "the_void",
+        "seasonColors": ["0xD4FFDF", "0xF1FFD4", "0xF7FFD4", "0xD4FFE0"]
+    },
+    {
+        "biomeId": "sunflower_plains",
+        "seasonColors": ["0x91BD59", "0xC4C165", "0xFFCA3B", "0xE3D27D"]
+    },
+    {
+        "biomeId": "flower_forest",
+        "seasonColors": ["0x79C05A", "0xABD278", "0xFF982F", "0xE6CE7E"]
+    },
+    {
+        "biomeId": "old_growth_birch_forest",
+        "seasonColors": ["0x88BB66", "0xEBF655", "0xFFC72F", "0xD3CE8E"]
+    },
+    {
+        "biomeId": "ice_spikes",
+        "seasonColors": ["0x80B497", "0xFCD746", "0xF6B07E", "0xFCFFFC"]
+    },
+    {
+        "biomeId": "mangrove_swamp",
+        "seasonColors": ["0x6A7039", "0x6A9235", "0x6A5A39", "0x6A7051"]
+    },
+    {
+        "biomeId": "old_growth_spruce_taiga",
+        "seasonColors": ["0x86B87F", "0xACC13A", "0xF9DD3B", "0xE9DC9A"]
+    },
+    {
+        "biomeId": "snowy_taiga",
+        "seasonColors": ["0x80B497", "0x85B446", "0xE79D46", "0xE3F9EC"]
+    },
+    {
+        "biomeId": "savanna",
+        "seasonColors": ["0xBFB755", "0xEFE581", "0xBFB755", "0x85B446"]
+    },
+    {
+        "biomeId": "savanna_plateau",
+        "seasonColors": ["0xBFB755", "0xEFE581", "0xBFB755", "0x85B446"]
+    },
+    {
+        "biomeId": "windswept_gravelly_hills",
+        "seasonColors": ["0x8AB689", "0xD5D244", "0xF4D27F", "0xF4D2AE"]
+    },
+    {
+        "biomeId": "windswept_forest",
+        "seasonColors": ["0x79C05A", "0xABD278", "0xFF982F", "0xE6CE7E"]
+    },
+    {
+        "biomeId": "windswept_savanna",
+        "seasonColors": ["0xBFB755", "0xEFE581", "0xBFB755", "0x85B446"]
+    },
+    {
+        "biomeId": "bamboo_jungle",
+        "seasonColors": ["0x64C73F", "0x9CB93F", "0xB6B93F", "0x68A525"]
+    },
+    {
+        "biomeId": "eroded_badlands",
+        "seasonColors": ["0x90814D", "0xC4B37D", "0x97C088", "0x5A814D"]
+    },
+    {
+        "biomeId": "wooded_badlands",
+        "seasonColors": ["0x90814D", "0xC4B37D", "0x97C088", "0x5A814D"]
+    },
+    {
+        "biomeId": "grove",
+        "seasonColors": ["0x80B497", "0xABD278", "0xFFA92F", "0xC19E59"]
+    },
+    {
+        "biomeId": "snowy_slopes",
+        "seasonColors": ["0x80B497", "0xFCD746", "0xF6B07E", "0xFCFFFC"]
+    },
+    {
+        "biomeId": "frozen_peaks",
+        "seasonColors": ["0x80B497", "0x6BA982", "0x80B497", "0xD6DFC3"]
+    },
+    {
+        "biomeId": "jagged_peaks",
+        "seasonColors": ["0x80B497", "0x6BA982", "0xE8D246", "0xC1A982"]
+    },
+    {
+        "biomeId": "river",
+        "seasonColors": ["0x8EB971", "0x8EB971", "0x8EB971", "0x8EB971"]
+    },
+    {
+        "biomeId": "frozen_river",
+        "seasonColors": ["0x83B593", "0xEDD675", "0xCD7C41", "0xF8F1DD"]
+    },
+    {
+        "biomeId": "stony_shore",
+        "seasonColors": ["0x8AB689", "0x89B25D", "0xFABC52", "0xBFD1BE"]
+    },
+    {
+        "biomeId": "warm_ocean",
+        "seasonColors": ["0x59C93C", "0x89EE34", "0x6BBB29", "0x6EBE29"]
+    },
+    {
+        "biomeId": "lukewarm_ocean",
+        "seasonColors": ["0x8EB971", "0x79A35D", "0x8EB971", "0x79A35D"]
+    },
+    {
+        "biomeId": "deep_lukewarm_ocean",
+        "seasonColors": ["0x8EB971", "0x79A35D", "0x8EB971", "0x79A35D"]
+    },
+    {
+        "biomeId": "deep_ocean",
+        "seasonColors": ["0x8EB971", "0x8EB971", "0x8EB971", "0x8EB971"]
+    },
+    {
+        "biomeId": "cold_ocean",
+        "seasonColors": ["0x8EB971", "0xDDEC62", "0xDDC662", "0xB4AA63"]
+    },
+    {
+        "biomeId": "deep_cold_ocean",
+        "seasonColors": ["0x8EB971", "0xDDEC62", "0xDDC662", "0xB4AA63"]
+    },
+    {
+        "biomeId": "deep_frozen_ocean",
+        "seasonColors": ["0x80B497", "0xFCD746", "0xF6B07E", "0xFCFFFC"]
+    },
+    {
+        "biomeId": "dripstone_caves",
+        "seasonColors": ["0x57631D", "0x47631D", "0x63621D", "0x403F18"]
+    },
+    {
+        "biomeId": "lush_caves",
+        "seasonColors": ["0x59C93C", "0x45D921", "0x98D921", "0x45631D"]
+    },
+    {
+        "biomeId": "deep_dark",
+        "seasonColors": ["0x1A2117", "0x1A2117", "0x1A2117", "0x1A2117"]
+    },
+    {
+        "biomeId": "nether_wastes",
+        "seasonColors": ["0x241410", "0x241410", "0x241410", "0x241410"]
+    },
+    {
+        "biomeId": "warped_forest",
+        "seasonColors": ["0x241410", "0x241410", "0x241410", "0x241410"]
+    },
+    {
+        "biomeId": "crimson_forest",
+        "seasonColors": ["0x241410", "0x241410", "0x241410", "0x241410"]
+    },
+    {
+        "biomeId": "soul_sand_valley",
+        "seasonColors": ["0x241410", "0x241410", "0x241410", "0x241410"]
+    },
+    {
+        "biomeId": "basalt_deltas",
+        "seasonColors": ["0x241410", "0x241410", "0x241410", "0x241410"]
+    },
+    {
+        "biomeId": "the_end",
+        "seasonColors": ["0x94C480", "0x94C480", "0x94C480", "0x94C480"]
+    },
+    {
+        "biomeId": "end_highlands",
+        "seasonColors": ["0x94C480", "0x94C480", "0x94C480", "0x94C480"]
+    },
+    {
+        "biomeId": "end_midlands",
+        "seasonColors": ["0x94C480", "0x94C480", "0x94C480", "0x94C480"]
+    },
+    {
+        "biomeId": "small_end_islands",
+        "seasonColors": ["0x94C480", "0x94C480", "0x94C480", "0x94C480"]
+    },
+    {
+        "biomeId": "end_barrens",
+        "seasonColors": ["0x94C480", "0x94C480", "0x94C480", "0x94C480"]
+    },
+    {
+        "biomeId": "plains",
+        "seasonColors": ["0x91BD59", "0xC4C165", "0xFFCA3B", "0xE3D27D"]
+    },
+    {
+        "biomeId": "snowy_plains",
+        "seasonColors": ["0x80B497", "0xFCD746", "0xF6B07E", "0xFCFFFC"]
+    },
+    {
+        "biomeId": "pale_garden",
+        "seasonColors": ["0x888888", "0x888888", "0x888888", "0x888888"]
+    }
+]

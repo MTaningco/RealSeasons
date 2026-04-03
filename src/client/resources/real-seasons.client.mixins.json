@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.realseasons.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"refmap": "real-seasons.refmap.json",
+	"client": [
+		"SeasonalPackMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
