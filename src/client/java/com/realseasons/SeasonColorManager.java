@@ -106,6 +106,9 @@ public class SeasonColorManager {
                 public int getColor(Biome biome, double x, double z) {
                     int asdf = biome.getGrassColorAt(x, z);
                     String biomeId = config.defaultGrassColorToBiomeGroupMap.get(asdf);
+                    if (config.defaultGrassColorToBiomeGroupMap.get(asdf) == null) {
+                        System.out.println("Biome with grass color " + asdf + " was not in the mapping. Please add it in.");
+                    }
                     int leftSeason = getGrassBiomeSeason(biomeId, t, config);
                     int rightSeason = getGrassBiomeSeason(biomeId, t + 0.25f, config);
 

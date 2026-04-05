@@ -276,6 +276,7 @@
     },
     {
         "biomeId": "pale_garden",
+        "defaultDecimalColor": -8945038,
         "seasonColors": ["0x888888", "0x888888", "0x888888", "0x888888"]
     }
 ]
