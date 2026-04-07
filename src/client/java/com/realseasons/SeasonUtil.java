@@ -27,8 +27,8 @@ public class SeasonUtil {
         LocalDate now = LocalDate.now();
         int day = now.getDayOfYear();
         int total = now.lengthOfYear();
-//        return (day / (float) total) + 0.67f; // offset to match real life better
-        return 0.75f;
+        return (day / (float) total) + 0.67f; // offset to match real life better
+//        return 0.9f;
     }
 
     public static int getSeasonIndex(float t) {

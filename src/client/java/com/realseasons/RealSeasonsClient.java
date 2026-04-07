@@ -196,7 +196,12 @@ public class RealSeasonsClient implements ClientModInitializer {
                 },
 		Blocks.GRASS_BLOCK,
 		Blocks.SHORT_GRASS,
-		Blocks.TALL_GRASS
+		Blocks.TALL_GRASS,
+		Blocks.BAMBOO,
+		Blocks.FERN,
+		Blocks.LARGE_FERN,
+		Blocks.POTTED_FERN,
+		Blocks.SUGAR_CANE
 		);
 
 		// 🍃 LEAVES
@@ -205,6 +210,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 					return SeasonColorManager.getBlendedFoliageColor(world, pos, state, config2);
 				},
 				Blocks.OAK_LEAVES,
+				Blocks.VINE,
 				Blocks.SPRUCE_LEAVES,
 				Blocks.BIRCH_LEAVES,
 				Blocks.JUNGLE_LEAVES,

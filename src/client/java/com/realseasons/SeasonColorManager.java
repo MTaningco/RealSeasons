@@ -232,7 +232,7 @@ public class SeasonColorManager {
         int seasonIndex = getSeasonIndex(t);
         int[] defaultArray = new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF};
 
-        if(state.isOf(Blocks.OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
+        if((state.isOf(Blocks.OAK_LEAVES) || state.isOf(Blocks.VINE)) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
             return config.blockTypeToBiomeSeasonMap.get("oak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
