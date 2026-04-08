@@ -3,21 +3,13 @@ package com.realseasons;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.resource.ResourcePackPosition;
-import net.minecraft.resource.ResourcePackProvider;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.FoliageColors;
-import net.minecraft.world.biome.GrassColors;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
-import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -185,30 +177,50 @@ public class RealSeasonsClient implements ClientModInitializer {
 //		System.out.println(config.toString());
 
 		// 🌿 GRASS
-		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+		BlockColorRegistry.register(List.of(new BlockTintSource() {
+					@Override
+					public int color(BlockState state) {
+						return 0;
+					}
 
-                    try {
-                        return SeasonColorManager.getBlendedGrassColor(world, pos, config);
-                    } catch (Exception e) {
-						return 0xFF0000;
+					@Override
+												public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+													try {
+														return SeasonColorManager.getBlendedGrassColor(level, pos, config);
+													} catch (Exception e) {
+														return 0xFFFF0000;
 //                        throw new UnsupportedOperationException (e);
-                    }
-                },
-		Blocks.GRASS_BLOCK,
-		Blocks.SHORT_GRASS,
-		Blocks.TALL_GRASS,
-		Blocks.BAMBOO,
-		Blocks.FERN,
-		Blocks.LARGE_FERN,
-		Blocks.POTTED_FERN,
-		Blocks.SUGAR_CANE
+													}
+												}
+											}),
+				Blocks.GRASS_BLOCK,
+				Blocks.SHORT_GRASS,
+				Blocks.TALL_GRASS,
+				Blocks.BAMBOO,
+				Blocks.FERN,
+				Blocks.LARGE_FERN,
+				Blocks.POTTED_FERN,
+				Blocks.SUGAR_CANE,
+				Blocks.BUSH
 		);
 
-		// 🍃 LEAVES
-		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
-//					return SeasonColorManager.getLeafColor(state, world, pos);
-					return SeasonColorManager.getBlendedFoliageColor(world, pos, state, config2);
-				},
+		BlockColorRegistry.register(List.of(new BlockTintSource() {
+
+					@Override
+					public int color(BlockState state) {
+						return 0xFFFF0000;
+					}
+
+					@Override
+					public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+						try {
+							return SeasonColorManager.getBlendedFoliageColor(level, pos, state, config2);
+						} catch (Exception e) {
+							return 0xFFFF0000;
+//                        throw new UnsupportedOperationException (e);
+						}
+					}
+				}),
 				Blocks.OAK_LEAVES,
 				Blocks.VINE,
 				Blocks.SPRUCE_LEAVES,

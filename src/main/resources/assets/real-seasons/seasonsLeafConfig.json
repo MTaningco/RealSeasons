@@ -1,6 +1,6 @@
 [
   {
-    "biomeId": "frozen_ocean",
+    "biomeId": "minecraft:frozen_ocean",
     "defaultDecimalColor": -8342377,
     "oak": ["0x60A17B", "0xFCD746", "0xA8331F", "0xFCFFFC"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
@@ -13,7 +13,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "windswept_hills",
+    "biomeId": "minecraft:windswept_hills",
     "defaultDecimalColor": -7686519,
     "oak": ["0x6DA36B", "0xEDEB75", "0x8F1A36", "0xE9DDD2"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -26,7 +26,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "ocean",
+    "biomeId": "minecraft:ocean",
     "defaultDecimalColor": -7423631,
     "oak": ["0x71A74D", "0xCAE94A", "0xFFD62F", "0xC4C675"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -39,7 +39,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "swamp",
+    "biomeId": "minecraft:swamp",
     "defaultDecimalColor": 6975545,
     "oak": ["0x6A7039", "0x6A9235", "0x6A5A39", "0x6A7051"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
@@ -52,7 +52,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "beach",
+    "biomeId": "minecraft:beach",
     "defaultDecimalColor": -7226023,
     "oak": ["0x77AB2F", "0xC4E965", "0xFF982F", "0xD1BE60"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -65,7 +65,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "mushroom_fields",
+    "biomeId": "minecraft:mushroom_fields",
     "defaultDecimalColor": -11155137,
     "oak": ["0x2BBB0F", "0x53730B", "0x69705D", "0x499734"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
@@ -78,7 +78,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "snowy_beach",
+    "biomeId": "minecraft:snowy_beach",
     "defaultDecimalColor": -8145517,
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
@@ -91,7 +91,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "taiga",
+    "biomeId": "minecraft:taiga",
     "defaultDecimalColor": -7948413,
     "oak": ["0x68A464", "0x398236", "0x8F9235", "0xDBEFA9"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -104,7 +104,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "meadow",
+    "biomeId": "minecraft:meadow",
     "defaultDecimalColor": -8144019,
     "oak": ["0x63A948", "0xABD278", "0xFF652F", "0xAE883C"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -117,7 +117,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "cherry_grove",
+    "biomeId": "minecraft:cherry_grove",
     "defaultDecimalColor": -4793503,
     "oak": ["0xB6DB61", "0x92EB51", "0xD5C441", "0xCFC486"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -130,7 +130,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "birch_forest",
+    "biomeId": "minecraft:birch_forest",
     "defaultDecimalColor": -7816346,
     "oak": ["0x6BA941", "0xEBf655", "0xFFAD00", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -143,7 +143,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "jungle",
+    "biomeId": "minecraft:jungle",
     "defaultDecimalColor": -10892996,
     "oak": ["0x30BB0B", "0x53730B", "0x9EB93F", "0x73C72B"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
@@ -156,7 +156,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "sparse_jungle",
+    "biomeId": "minecraft:sparse_jungle",
     "defaultDecimalColor": -10172609,
     "oak": ["0x3EB80F", "0x53730B", "0x9EB93F", "0x96C723"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
@@ -169,7 +169,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "stony_peaks",
+    "biomeId": "minecraft:stony_peaks",
     "defaultDecimalColor": -6635957,
     "oak": ["0x82AC1E", "0xB9AC45", "0xBBC655", "0x6D901C"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -182,7 +182,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "desert",
+    "biomeId": "minecraft:desert",
     "defaultDecimalColor": -4212907,
     "oak": ["0xAEA42A", "0xF6DB6A", "0xF3E664", "0x89AE36"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
@@ -195,7 +195,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "forest",
+    "biomeId": "minecraft:forest",
     "defaultDecimalColor": -8798118,
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -208,7 +208,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0xFFFF00", "0x0000FF"]
   },
   {
-    "biomeId": "dark_forest",
+    "biomeId": "minecraft:dark_forest",
     "defaultDecimalColor": 5274162,
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -221,7 +221,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "badlands",
+    "biomeId": "minecraft:badlands",
     "defaultDecimalColor": -7306931,
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
@@ -234,7 +234,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "old_growth_pine_taiga",
+    "biomeId": "minecraft:old_growth_pine_taiga",
     "defaultDecimalColor": -7948161,
     "oak": ["0x68A55F", "0xACC13A", "0xFFA92F", "0xD2BE5B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
@@ -247,7 +247,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "the_void",
+    "biomeId": "minecraft:the_void",
     "oak": ["0xF7FFD4", "0xF7FFD4", "0xF7FFD4", "0xF7FFD4"],
     "spruce": ["0xAEC3B1", "0xAEC3B1", "0xAEC3B1", "0xAEC3B1"],
     "birch": ["0xF7FFD4", "0xF7FFD4", "0xF7FFD4", "0xF7FFD4"],
@@ -259,7 +259,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "sunflower_plains",
+    "biomeId": "minecraft:sunflower_plains",
     "oak": ["0x77AB2F", "0xC4E965", "0xFF982F", "0xD1BE60"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -271,7 +271,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "flower_forest",
+    "biomeId": "minecraft:flower_forest",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -283,7 +283,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "old_growth_birch_forest",
+    "biomeId": "minecraft:old_growth_birch_forest",
     "oak": ["0x6BA941", "0xEBf655", "0xFFAD00", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -295,7 +295,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "ice_spikes",
+    "biomeId": "minecraft:ice_spikes",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -307,7 +307,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "mangrove_swamp",
+    "biomeId": "minecraft:mangrove_swamp",
     "oak": ["0x6A7039", "0x6A9235", "0x6A5A39", "0x6A7051"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -319,7 +319,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "old_growth_spruce_taiga",
+    "biomeId": "minecraft:old_growth_spruce_taiga",
     "oak": ["0x68A55F", "0xACC13A", "0xFFA92F", "0xD2BE5B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -331,7 +331,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "snowy_taiga",
+    "biomeId": "minecraft:snowy_taiga",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -343,7 +343,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "savanna",
+    "biomeId": "minecraft:savanna",
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -355,7 +355,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "savanna_plateau",
+    "biomeId": "minecraft:savanna_plateau",
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -367,7 +367,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "windswept_gravelly_hills",
+    "biomeId": "minecraft:windswept_gravelly_hills",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x80F655", "0xFFDB00", "0x665026"],
@@ -379,7 +379,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "windswept_forest",
+    "biomeId": "minecraft:windswept_forest",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -391,7 +391,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "windswept_savanna",
+    "biomeId": "minecraft:windswept_savanna",
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -403,7 +403,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "bamboo_jungle",
+    "biomeId": "minecraft:bamboo_jungle",
     "oak": ["0x30BB0B", "0x53730B", "0x9EB93F", "0x73C72B"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -415,7 +415,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "eroded_badlands",
+    "biomeId": "minecraft:eroded_badlands",
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -427,7 +427,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "wooded_badlands",
+    "biomeId": "minecraft:wooded_badlands",
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -439,7 +439,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "grove",
+    "biomeId": "minecraft:grove",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -451,7 +451,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "snowy_slopes",
+    "biomeId": "minecraft:snowy_slopes",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -463,7 +463,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "frozen_peaks",
+    "biomeId": "minecraft:frozen_peaks",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -475,7 +475,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "jagged_peaks",
+    "biomeId": "minecraft:jagged_peaks",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -487,7 +487,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "river",
+    "biomeId": "minecraft:river",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x80F655", "0xFFDB00", "0x665026"],
@@ -499,7 +499,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "frozen_river",
+    "biomeId": "minecraft:frozen_river",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -511,7 +511,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "stony_shore",
+    "biomeId": "minecraft:stony_shore",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x80F655", "0xFFDB00", "0x665026"],
@@ -523,7 +523,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "warm_ocean",
+    "biomeId": "minecraft:warm_ocean",
     "oak": ["0x30BB0B", "0x53730B", "0x73C72B", "0x73C72B"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -535,7 +535,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "lukewarm_ocean",
+    "biomeId": "minecraft:lukewarm_ocean",
     "oak": ["0x30BB0B", "0x53730B", "0x73C72B", "0x73C72B"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -547,7 +547,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "deep_lukewarm_ocean",
+    "biomeId": "minecraft:deep_lukewarm_ocean",
     "oak": ["0x30BB0B", "0x53730B", "0x73C72B", "0x73C72B"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -559,7 +559,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "deep_ocean",
+    "biomeId": "minecraft:deep_ocean",
     "oak": ["0x30BB0B", "0x89EE34", "0x73C72B", "0x73C72B"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -571,7 +571,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "cold_ocean",
+    "biomeId": "minecraft:cold_ocean",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x80F655", "0xFFDB00", "0x665026"],
@@ -583,7 +583,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "deep_cold_ocean",
+    "biomeId": "minecraft:deep_cold_ocean",
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x80F655", "0xFFDB00", "0x665026"],
@@ -595,7 +595,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "deep_frozen_ocean",
+    "biomeId": "minecraft:deep_frozen_ocean",
     "oak": ["0x64A278", "0xEDD675", "0xA8641F", "0xF8EDCD"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -607,7 +607,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "dripstone_caves",
+    "biomeId": "minecraft:dripstone_caves",
     "oak": ["0x30BB0B", "0x89EE34", "0x73C72B", "0x73C72B"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -619,7 +619,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "lush_caves",
+    "biomeId": "minecraft:lush_caves",
     "oak": ["0x30BB0B", "0x53730B", "0x73C72B", "0x73C72B"],
     "spruce": ["0x2A5535", "0x2A5535", "0x2A5535", "0x2A5535"],
     "birch": ["0x80A755", "0x81B844", "0x80A755", "0x81B844"],
@@ -631,7 +631,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "deep_dark",
+    "biomeId": "minecraft:deep_dark",
     "oak": ["0x222A1F", "0x222A1F", "0x222A1F", "0x222A1F"],
     "spruce": ["0x0E1910", "0x0E1910", "0x0E1910", "0x0E1910"],
     "birch": ["0x252A1F", "0x252A1F", "0x252A1F", "0x252A1F"],
@@ -643,7 +643,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "nether_wastes",
+    "biomeId": "minecraft:nether_wastes",
     "oak": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "spruce": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "birch": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
@@ -655,7 +655,7 @@
     "azalea": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"]
   },
   {
-    "biomeId": "warped_forest",
+    "biomeId": "minecraft:warped_forest",
     "oak": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "spruce": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "birch": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
@@ -667,7 +667,7 @@
     "azalea": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"]
   },
   {
-    "biomeId": "crimson_forest",
+    "biomeId": "minecraft:crimson_forest",
     "oak": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "spruce": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "birch": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
@@ -679,7 +679,7 @@
     "azalea": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"]
   },
   {
-    "biomeId": "soul_sand_valley",
+    "biomeId": "minecraft:soul_sand_valley",
     "oak": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "spruce": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "birch": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
@@ -691,7 +691,7 @@
     "azalea": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"]
   },
   {
-    "biomeId": "basalt_deltas",
+    "biomeId": "minecraft:basalt_deltas",
     "oak": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "spruce": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
     "birch": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"],
@@ -703,7 +703,7 @@
     "azalea": ["0x310A00", "0x310A00", "0x310A00", "0x310A00"]
   },
   {
-    "biomeId": "the_end",
+    "biomeId": "minecraft:the_end",
     "oak": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "spruce": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "birch": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
@@ -715,7 +715,7 @@
     "azalea": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"]
   },
   {
-    "biomeId": "end_highlands",
+    "biomeId": "minecraft:end_highlands",
     "oak": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "spruce": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "birch": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
@@ -727,7 +727,7 @@
     "azalea": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"]
   },
   {
-    "biomeId": "end_midlands",
+    "biomeId": "minecraft:end_midlands",
     "oak": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "spruce": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "birch": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
@@ -739,7 +739,7 @@
     "azalea": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"]
   },
   {
-    "biomeId": "small_end_islands",
+    "biomeId": "minecraft:small_end_islands",
     "oak": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "spruce": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "birch": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
@@ -751,7 +751,7 @@
     "azalea": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"]
   },
   {
-    "biomeId": "end_barrens",
+    "biomeId": "minecraft:end_barrens",
     "oak": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "spruce": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
     "birch": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"],
@@ -763,7 +763,7 @@
     "azalea": ["0xA3CA76", "0xA3CA76", "0xA3CA76", "0xA3CA76"]
   },
   {
-    "biomeId": "plains",
+    "biomeId": "minecraft:plains",
     "oak": ["0x77AB2F", "0xC4E965", "0xFF982F", "0xD1BE60"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x80A755", "0x81B844", "0xFFDB00", "0x665026"],
@@ -775,7 +775,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "snowy_plains",
+    "biomeId": "minecraft:snowy_plains",
     "oak": ["0x60A17B", "0xFCD746", "0xA8331F", "0xFCFFFC"],
     "spruce": ["0xCCEEDF", "0x9FECCD", "0xCCEEDF", "0xE9F9F2"],
     "birch": ["0xF2E191", "0xD5D244", "0xF2E191", "0xE6E1D0"],
@@ -787,7 +787,7 @@
     "azalea": ["0x0000FF", "0x0000FF", "0x0000FF", "0x0000FF"]
   },
   {
-    "biomeId": "pale_garden",
+    "biomeId": "minecraft:pale_garden",
     "defaultDecimalColor": -8945038,
     "oak": ["0x87A17E", "0x87A17E", "0x87A17E", "0x87A17E"],
     "spruce": ["0x566158", "0x566158", "0x566158", "0x566158"],

@@ -1,14 +1,14 @@
 package com.realseasons;
 
 import com.google.gson.Gson;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.color.world.BiomeColors;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.world.BlockRenderView;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.ColorResolver;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.world.level.ColorResolver;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -95,16 +95,16 @@ public class SeasonColorManager {
 //        return lerpColor(vanilla, seasonal, 0.6f);
 //    }
 
-    public static int getGrassColor2(BlockRenderView world, BlockPos pos, ColorMapConfig2 config) throws Exception {
+    public static int getGrassColor2(BlockAndTintGetter world, BlockPos pos, ColorMapConfig2 config) throws Exception {
          float t = getYearProgress();
 
-        RegistryEntry<Biome> entry = world.getBiomeFabric(pos);
+        Holder<Biome> entry = world.getBiomeFabric(pos);
 
         if (entry == null) {
-            int x = world.getColor(pos, new ColorResolver() {
+            int x = world.getBlockTint(pos, new ColorResolver() {
                 @Override
                 public int getColor(Biome biome, double x, double z) {
-                    int asdf = biome.getGrassColorAt(x, z);
+                    int asdf = biome.getGrassColor(x, z);
                     String biomeId = config.defaultGrassColorToBiomeGroupMap.get(asdf);
                     if (config.defaultGrassColorToBiomeGroupMap.get(asdf) == null) {
                         System.out.println("Biome with grass color " + asdf + " was not in the mapping. Please add it in.");
@@ -122,7 +122,7 @@ public class SeasonColorManager {
             return x;
         }
 
-        String biomeId = entry.getKey().get().getValue().getPath();
+        String biomeId = entry.getRegisteredName();
 
         int leftSeason = getGrassBiomeSeason(biomeId, t, config);
         int rightSeason = getGrassBiomeSeason(biomeId, t + 0.25f, config);
@@ -143,7 +143,7 @@ public class SeasonColorManager {
         return config.biomeIdToSeasonArrayMap.getOrDefault(biomeId, new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF})[seasonIndex];
     }
 
-    public static int getBlendedGrassColor(BlockRenderView world, BlockPos pos, ColorMapConfig2 config) throws Exception {
+    public static int getBlendedGrassColor(BlockAndTintGetter world, BlockPos pos, ColorMapConfig2 config) throws Exception {
 
         int radius = 2; // same idea as vanilla
         int r = 0, g = 0, b = 0;
@@ -152,7 +152,7 @@ public class SeasonColorManager {
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
 
-                BlockPos samplePos = pos.add(dx, 0, dz);
+                BlockPos samplePos = pos.offset(dx, 0, dz);
 
 //                int color = getGrassBiomeSeasonUsingDefaultGrassColor(world, samplePos);
                 int color = getGrassColor2(world, samplePos, config);
@@ -165,10 +165,10 @@ public class SeasonColorManager {
             }
         }
 
-        return (r / count << 16) | (g / count << 8) | (b / count);
+        return (0xFF << 24) | (r / count << 16) | (g / count << 8) | (b / count);
     }
 
-    public static int getBlendedFoliageColor(BlockRenderView world, BlockPos pos, BlockState state, ColorMapConfig3 config) {
+    public static int getBlendedFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, ColorMapConfig3 config) {
         int radius = 2; // same idea as vanilla
         int r = 0, g = 0, b = 0;
         int count = 0;
@@ -176,7 +176,7 @@ public class SeasonColorManager {
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
 
-                BlockPos samplePos = pos.add(dx, 0, dz);
+                BlockPos samplePos = pos.offset(dx, 0, dz);
 
 //                int color = getGrassBiomeSeasonUsingDefaultGrassColor(world, samplePos);
                 int color = getFoliageColor2(world, samplePos, state, config);
@@ -189,19 +189,19 @@ public class SeasonColorManager {
             }
         }
 
-        return (r / count << 16) | (g / count << 8) | (b / count);
+        return (0xFF << 24) | (r / count << 16) | (g / count << 8) | (b / count);
     }
 
-    public static int getFoliageColor2(BlockRenderView world, BlockPos pos, BlockState state, ColorMapConfig3 config) {
+    public static int getFoliageColor2(BlockAndTintGetter world, BlockPos pos, BlockState state, ColorMapConfig3 config) {
         float t = getYearProgress();
 
-        RegistryEntry<Biome> entry = world.getBiomeFabric(pos);
+        Holder<Biome> entry = world.getBiomeFabric(pos);
 
         if (entry == null) {
-            int x = world.getColor(pos, new ColorResolver() {
+            int x = world.getBlockTint(pos, new ColorResolver() {
                 @Override
                 public int getColor(Biome biome, double x, double z) {
-                    int asdf = biome.getGrassColorAt(x, z);
+                    int asdf = biome.getGrassColor(x, z);
                     String biomeId = config.defaultGrassColorToBiomeGroupMap.get(asdf);
                     int leftSeason = getFoliageBiomeSeason(biomeId, state, t, config);
                     int rightSeason = getFoliageBiomeSeason(biomeId, state, t + 0.25f, config);
@@ -216,7 +216,7 @@ public class SeasonColorManager {
             return x;
         }
 
-        String biomeId = entry.getKey().get().getValue().getPath();
+        String biomeId = entry.getRegisteredName();
 
         int leftSeason = getFoliageBiomeSeason(biomeId, state, t, config);
         int rightSeason = getFoliageBiomeSeason(biomeId, state, t + 0.25f, config);
@@ -232,39 +232,39 @@ public class SeasonColorManager {
         int seasonIndex = getSeasonIndex(t);
         int[] defaultArray = new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF};
 
-        if((state.isOf(Blocks.OAK_LEAVES) || state.isOf(Blocks.VINE)) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
+        if((state.is(Blocks.OAK_LEAVES) || state.is(Blocks.VINE)) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
             return config.blockTypeToBiomeSeasonMap.get("oak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.SPRUCE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("spruce")) {
+        if(state.is(Blocks.SPRUCE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("spruce")) {
             return config.blockTypeToBiomeSeasonMap.get("spruce").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.BIRCH_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("birch")) {
+        if(state.is(Blocks.BIRCH_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("birch")) {
             return config.blockTypeToBiomeSeasonMap.get("birch").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.JUNGLE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("jungle")) {
+        if(state.is(Blocks.JUNGLE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("jungle")) {
             return config.blockTypeToBiomeSeasonMap.get("jungle").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.ACACIA_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("acacia")) {
+        if(state.is(Blocks.ACACIA_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("acacia")) {
             return config.blockTypeToBiomeSeasonMap.get("acacia").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.DARK_OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("darkOak")) {
+        if(state.is(Blocks.DARK_OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("darkOak")) {
             return config.blockTypeToBiomeSeasonMap.get("darkOak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.MANGROVE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("mangrove")) {
+        if(state.is(Blocks.MANGROVE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("mangrove")) {
             return config.blockTypeToBiomeSeasonMap.get("mangrove").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.PALE_OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("paleOak")) {
+        if(state.is(Blocks.PALE_OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("paleOak")) {
             return config.blockTypeToBiomeSeasonMap.get("paleOak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.isOf(Blocks.AZALEA_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("azalea")) {
+        if(state.is(Blocks.AZALEA_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("azalea")) {
             return config.blockTypeToBiomeSeasonMap.get("azalea").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
@@ -279,12 +279,6 @@ public class SeasonColorManager {
 
     // 🍃 Same idea for leaves
 
-    public static int getLeafColor(BlockState state, BlockRenderView world, BlockPos pos) {
-        int vanilla = BiomeColors.getFoliageColor(world, pos);
-        float t = getYearProgress();
-        int seasonal = getTreeSpecificColor(state, t);
-        return lerpColor(vanilla, seasonal, 0.7f);
-    }
 
     private static int getSeasonalColor() {
         float t = getYearProgress();
@@ -326,31 +320,6 @@ public class SeasonColorManager {
         int bC = (int)(ab + (bb - ab) * t);
 
         return (r << 16) | (g << 8) | bC;
-    }
-
-    private static int getTreeSpecificColor(BlockState state, float t) {
-
-        if (state.isOf(Blocks.OAK_LEAVES) || state.isOf(Blocks.DARK_OAK_LEAVES)) {
-            return getOakColor(t);
-        }
-
-        if (state.isOf(Blocks.BIRCH_LEAVES)) {
-            return getBirchColor(t);
-        }
-
-        if (state.isOf(Blocks.JUNGLE_LEAVES)) {
-            return getJungleColor(t);
-        }
-
-        if (state.isOf(Blocks.ACACIA_LEAVES)) {
-            return getAcaciaColor(t);
-        }
-
-        if (state.isOf(Blocks.SPRUCE_LEAVES)) {
-            return getSpruceColor(t);
-        }
-
-        return getSeasonalColor(); // fallback
     }
 
     private static int getOakColor(float t) {
