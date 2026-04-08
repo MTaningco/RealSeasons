@@ -21,22 +21,82 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		GrassColorMapConfig grassConfig = generateGrassColorMapConfig();
 
+		FoliageColorMapConfig foliageConfig = generateFoliageColorMapConfig();
+
+		// 🌿 GRASS
+		BlockColorRegistry.register(List.of(new BlockTintSource() {
+				@Override
+				public int color(BlockState state) {
+					return 0; // Dummy override just to satisfy interface
+				}
+
+				@Override
+				public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+					try {
+						return SeasonColorManager.getBlendedGrassColor(level, pos, grassConfig);
+					} catch (Exception e) {
+						return 0xFFFF00FF; // Obvious magenta color to make issue visible
+					}
+				}
+			}),
+			Blocks.GRASS_BLOCK,
+			Blocks.SHORT_GRASS,
+			Blocks.TALL_GRASS,
+			Blocks.BAMBOO,
+			Blocks.FERN,
+			Blocks.LARGE_FERN,
+			Blocks.POTTED_FERN,
+			Blocks.SUGAR_CANE,
+			Blocks.BUSH
+		);
+
+		BlockColorRegistry.register(List.of(new BlockTintSource() {
+
+				@Override
+				public int color(BlockState state) {
+					return 0; // Dummy override just to satisfy interface
+				}
+
+				@Override
+				public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+					try {
+						return SeasonColorManager.getBlendedFoliageColor(level, pos, state, foliageConfig);
+					} catch (Exception e) {
+						return 0xFFFF00FF; // Obvious magenta color to make issue visible
+					}
+				}
+			}),
+			Blocks.OAK_LEAVES,
+			Blocks.VINE,
+			Blocks.SPRUCE_LEAVES,
+			Blocks.BIRCH_LEAVES,
+			Blocks.JUNGLE_LEAVES,
+			Blocks.ACACIA_LEAVES,
+			Blocks.DARK_OAK_LEAVES,
+			Blocks.PALE_OAK_LEAVES,
+			Blocks.AZALEA_LEAVES,
+			Blocks.MANGROVE_LEAVES
+		);
+	}
+
+	private GrassColorMapConfig generateGrassColorMapConfig() {
 		InputStream stream = RealSeasonsClient.class.getResourceAsStream(
-				                "/assets/real-seasons/seasonsGrassConfig.json"
+				"/assets/real-seasons/seasonsGrassConfig.json"
 		);
 		Reader reader = new InputStreamReader(stream);
 
 		Gson gson = new Gson();
 
-		// 👇 parse array
+		// parse array
 		List<GrassConfigEntry> entries = gson.fromJson(
 				reader,
 				new TypeToken<List<GrassConfigEntry>>() {}.getType()
 		);
 
-		// 👇 convert to your structure
-		ColorMapConfig2 config = new ColorMapConfig2();
+		// convert to your structure
+		GrassColorMapConfig config = new GrassColorMapConfig();
 		config.defaultGrassColorToBiomeGroupMap = new HashMap<>();
 		config.biomeIdToSeasonArrayMap = new HashMap<>();
 
@@ -50,7 +110,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 							.toArray()
 			);
 
-			// optional default color → biome group
+			// optional default color -> biome group
 			if (entry.defaultDecimalColor != null) {
 				config.defaultGrassColorToBiomeGroupMap.put(
 						entry.defaultDecimalColor,
@@ -58,195 +118,121 @@ public class RealSeasonsClient implements ClientModInitializer {
 				);
 			}
 		}
+		return config;
+	}
 
-
-		InputStream stream2 = RealSeasonsClient.class.getResourceAsStream(
+	private FoliageColorMapConfig generateFoliageColorMapConfig() {
+		InputStream stream = RealSeasonsClient.class.getResourceAsStream(
 				"/assets/real-seasons/seasonsLeafConfig.json"
 		);
-		Reader reader2 = new InputStreamReader(stream2);
+		Reader reader = new InputStreamReader(stream);
 
-		Gson gson2 = new Gson();
+		Gson gson = new Gson();
 
-		// 👇 parse array
-		List<FoliageConfigEntry> entries2 = gson2.fromJson(
-				reader2,
+		// parse array
+		List<FoliageConfigEntry> entries = gson.fromJson(
+				reader,
 				new TypeToken<List<FoliageConfigEntry>>() {}.getType()
 		);
 
-		// 👇 convert to your structure
-		ColorMapConfig3 config2 = new ColorMapConfig3();
-		config2.defaultGrassColorToBiomeGroupMap = new HashMap<>();
-		config2.blockTypeToBiomeSeasonMap = new HashMap<>();
+		// convert to your structure
+		FoliageColorMapConfig config = new FoliageColorMapConfig();
+		config.defaultGrassColorToBiomeGroupMap = new HashMap<>();
+		config.blockTypeToBiomeSeasonMap = new HashMap<>();
 
-		for (FoliageConfigEntry entry : entries2) {
+		for (FoliageConfigEntry entry : entries) {
 
 			// biome → seasonal colors
-			HashMap<String, int[]> oakHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("oak", new HashMap<>());
+			HashMap<String, int[]> oakHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("oak", new HashMap<>());
 			oakHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.oak)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("oak", oakHashMap);
+			config.blockTypeToBiomeSeasonMap.put("oak", oakHashMap);
 
-			HashMap<String, int[]> spruceHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("spruce", new HashMap<>());
+			HashMap<String, int[]> spruceHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("spruce", new HashMap<>());
 			spruceHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.spruce)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("spruce", spruceHashMap);
+			config.blockTypeToBiomeSeasonMap.put("spruce", spruceHashMap);
 
-			HashMap<String, int[]> birchHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("birch", new HashMap<>());
+			HashMap<String, int[]> birchHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("birch", new HashMap<>());
 			birchHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.birch)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("birch", birchHashMap);
+			config.blockTypeToBiomeSeasonMap.put("birch", birchHashMap);
 
-			HashMap<String, int[]> jungleHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("jungle", new HashMap<>());
+			HashMap<String, int[]> jungleHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("jungle", new HashMap<>());
 			jungleHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.jungle)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("jungle", jungleHashMap);
+			config.blockTypeToBiomeSeasonMap.put("jungle", jungleHashMap);
 
-			HashMap<String, int[]> acaciaHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("acacia", new HashMap<>());
+			HashMap<String, int[]> acaciaHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("acacia", new HashMap<>());
 			acaciaHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.acacia)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("acacia", acaciaHashMap);
+			config.blockTypeToBiomeSeasonMap.put("acacia", acaciaHashMap);
 
-			HashMap<String, int[]> darkOakHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("darkOak", new HashMap<>());
+			HashMap<String, int[]> darkOakHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("darkOak", new HashMap<>());
 			darkOakHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.darkOak)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("darkOak", darkOakHashMap);
+			config.blockTypeToBiomeSeasonMap.put("darkOak", darkOakHashMap);
 
-			HashMap<String, int[]> mangroveHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("mangrove", new HashMap<>());
+			HashMap<String, int[]> mangroveHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("mangrove", new HashMap<>());
 			mangroveHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.mangrove)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("mangrove", mangroveHashMap);
+			config.blockTypeToBiomeSeasonMap.put("mangrove", mangroveHashMap);
 
-			HashMap<String, int[]> paleOakHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("paleOak", new HashMap<>());
+			HashMap<String, int[]> paleOakHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("paleOak", new HashMap<>());
 			paleOakHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.paleOak)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("paleOak", paleOakHashMap);
+			config.blockTypeToBiomeSeasonMap.put("paleOak", paleOakHashMap);
 
-			HashMap<String, int[]> azaleaHashMap = config2.blockTypeToBiomeSeasonMap.getOrDefault("azalea", new HashMap<>());
+			HashMap<String, int[]> azaleaHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("azalea", new HashMap<>());
 			azaleaHashMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.azalea)
 							.mapToInt(Integer::decode)
 							.toArray()
 			);
-			config2.blockTypeToBiomeSeasonMap.put("azalea", azaleaHashMap);
+			config.blockTypeToBiomeSeasonMap.put("azalea", azaleaHashMap);
 
 
-			// optional default color → biome group
+			// optional default color -> biome group
 			if (entry.defaultDecimalColor != null) {
-				config2.defaultGrassColorToBiomeGroupMap.put(
+				config.defaultGrassColorToBiomeGroupMap.put(
 						entry.defaultDecimalColor,
 						entry.biomeId
 				);
 			}
 		}
-
-
-
-//		System.out.println(config.toString());
-
-		// 🌿 GRASS
-		BlockColorRegistry.register(List.of(new BlockTintSource() {
-					@Override
-					public int color(BlockState state) {
-						return 0;
-					}
-
-					@Override
-												public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-													try {
-														return SeasonColorManager.getBlendedGrassColor(level, pos, config);
-													} catch (Exception e) {
-														return 0xFFFF0000;
-//                        throw new UnsupportedOperationException (e);
-													}
-												}
-											}),
-				Blocks.GRASS_BLOCK,
-				Blocks.SHORT_GRASS,
-				Blocks.TALL_GRASS,
-				Blocks.BAMBOO,
-				Blocks.FERN,
-				Blocks.LARGE_FERN,
-				Blocks.POTTED_FERN,
-				Blocks.SUGAR_CANE,
-				Blocks.BUSH
-		);
-
-		BlockColorRegistry.register(List.of(new BlockTintSource() {
-
-					@Override
-					public int color(BlockState state) {
-						return 0xFFFF0000;
-					}
-
-					@Override
-					public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-						try {
-							return SeasonColorManager.getBlendedFoliageColor(level, pos, state, config2);
-						} catch (Exception e) {
-							return 0xFFFF0000;
-//                        throw new UnsupportedOperationException (e);
-						}
-					}
-				}),
-				Blocks.OAK_LEAVES,
-				Blocks.VINE,
-				Blocks.SPRUCE_LEAVES,
-				Blocks.BIRCH_LEAVES,
-				Blocks.JUNGLE_LEAVES,
-				Blocks.ACACIA_LEAVES,
-				Blocks.DARK_OAK_LEAVES,
-				Blocks.PALE_OAK_LEAVES,
-				Blocks.AZALEA_LEAVES,
-				Blocks.MANGROVE_LEAVES
-		);
-
-//		ResourceManagerHelper.registerBuiltinResourcePack(
-//				Identifier.of("realseasons", "seasonal"),
-//				FabricLoader.getInstance().getModContainer("realseasons").get(),
-//				Text.literal("Seasonal Colormap"),
-//				ResourcePackActivationType.DEFAULT_ENABLED
-//		);
-
-		//SeasonalPackHolder.PACK = new SeasonalResourcePack();
-
-//		BufferedImage map = SeasonColormapGenerator.generateGrassMap();
-//
-//		NativeImage img = TextureLoader.convert(map);
-//
-//		GrassColors.setColorMap(img);
-//		FoliageColors.setColorMap(img);
+		return config;
 	}
 }

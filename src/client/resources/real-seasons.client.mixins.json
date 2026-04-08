@@ -3,8 +3,7 @@
 	"package": "com.realseasons.mixin.client",
 	"compatibilityLevel": "JAVA_25",
 	"refmap": "real-seasons.refmap.json",
-	"client": [
-	],
+	"client": [],
 	"injectors": {
 		"defaultRequire": 1
 	}
