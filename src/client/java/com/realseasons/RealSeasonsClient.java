@@ -76,7 +76,6 @@ public class RealSeasonsClient implements ClientModInitializer {
 			Blocks.ACACIA_LEAVES,
 			Blocks.DARK_OAK_LEAVES,
 			Blocks.PALE_OAK_LEAVES,
-			Blocks.AZALEA_LEAVES,
 			Blocks.MANGROVE_LEAVES
 		);
 	}

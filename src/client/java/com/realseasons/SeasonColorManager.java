@@ -90,7 +90,7 @@ public class SeasonColorManager {
 
                 BlockPos samplePos = pos.offset(dx, 0, dz);
 
-                int color = getFoliageColor2(world, samplePos, state, config);
+                int color = getFoliageColor(world, samplePos, state, config);
 
                 r += (color >> 16) & 0xFF;
                 g += (color >> 8) & 0xFF;
@@ -103,7 +103,7 @@ public class SeasonColorManager {
         return (0xFF << 24) | (r / count << 16) | (g / count << 8) | (b / count); // FF prefixed to handle transparency
     }
 
-    public static int getFoliageColor2(BlockAndTintGetter world, BlockPos pos, BlockState state, FoliageColorMapConfig config) {
+    public static int getFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, FoliageColorMapConfig config) {
         float yearProgressCoefficient = getYearProgress();
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
