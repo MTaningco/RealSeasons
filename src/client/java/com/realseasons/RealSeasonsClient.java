@@ -3,24 +3,43 @@ package com.realseasons;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class RealSeasonsClient implements ClientModInitializer {
 
+	public static final boolean isGameDays = false;
+	public static final int subdivisionsPerSeason = 3;
+	public static final int yearLength = 12;
+
+	public static final int MIN_SUBDIVISION_LENGTH = 5;
+	public static final String MOD_ID = "real-seasons";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final HashSet<Integer> unknownOriginalGrassColorSet = new HashSet<>();
+	public static final HashSet<String> unknownBiomeIdsSet = new HashSet<>();
+
+	public static float currentInGameYearProgress = 0f;
+
 	@Override
 	public void onInitializeClient() {
+		if (isGameDays && (yearLength / (subdivisionsPerSeason * 4)) < MIN_SUBDIVISION_LENGTH) {
+			RealSeasonsClient.LOGGER.error("[Real Seasons]: Current year length and subdivisions per season configs imply subdivision length of less than 5 days. Please change configs such that a subdivision is more than or equal to 5 days.", new UnsupportedOperationException());
+			throw new UnsupportedOperationException("Year length and subdivision configs will cause too frequent of a reload.");
+		}
+
 		GrassColorMapConfig grassConfig = generateGrassColorMapConfig();
 
 		FoliageColorMapConfig foliageConfig = generateFoliageColorMapConfig();
@@ -51,6 +70,16 @@ public class RealSeasonsClient implements ClientModInitializer {
 			Blocks.SUGAR_CANE,
 			Blocks.BUSH
 		);
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (isGameDays && client.level != null) {
+                long currentTicks = client.level.getOverworldClockTime();
+				float currentClampedYearProgress = SeasonUtil.getClampedInGameYearProgress(currentTicks, subdivisionsPerSeason, yearLength);
+                if (currentInGameYearProgress != currentClampedYearProgress) {
+                    currentInGameYearProgress = currentClampedYearProgress;
+                    Minecraft.getInstance().levelRenderer.allChanged();
+                }
+            }
+        });
 
 		BlockColorRegistry.register(List.of(new BlockTintSource() {
 
@@ -101,7 +130,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 		for (GrassConfigEntry entry : entries) {
 
-			// biome → seasonal colors
+			// biome -> seasonal colors
 			config.biomeIdToSeasonArrayMap.put(
 					entry.biomeId,
 					Arrays.stream(entry.seasonColors)
@@ -141,7 +170,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 		for (FoliageConfigEntry entry : entries) {
 
-			// biome → seasonal colors
+			// biome -> seasonal colors
 			HashMap<String, int[]> oakHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("oak", new HashMap<>());
 			oakHashMap.put(
 					entry.biomeId,

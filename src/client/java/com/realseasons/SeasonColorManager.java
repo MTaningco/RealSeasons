@@ -7,13 +7,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.BlockPos;
 
+import static com.realseasons.RealSeasonsClient.currentInGameYearProgress;
+import static com.realseasons.RealSeasonsClient.isGameDays;
 import static com.realseasons.SeasonUtil.getSeasonIndex;
-import static com.realseasons.SeasonUtil.getYearProgress;
+import static com.realseasons.SeasonUtil.getRealYearProgress;
 
 public class SeasonColorManager {
 
     public static int getGrassColor(BlockAndTintGetter world, BlockPos pos, GrassColorMapConfig config) throws Exception {
-         float yearProgressCoefficient = getYearProgress();
+        float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
 
@@ -21,8 +23,9 @@ public class SeasonColorManager {
             return world.getBlockTint(pos, (biome, x1, z) -> {
                 int originalGrassColor = biome.getGrassColor(x1, z);
                 String biomeId = config.defaultGrassColorToBiomeGroupMap.get(originalGrassColor);
-                if (config.defaultGrassColorToBiomeGroupMap.get(originalGrassColor) == null) {
-                    System.out.println("Biome with grass color " + originalGrassColor + " was not in the mapping. Please add it in.");
+                if (config.defaultGrassColorToBiomeGroupMap.get(originalGrassColor) == null && !RealSeasonsClient.unknownOriginalGrassColorSet.contains(originalGrassColor)) {
+                    RealSeasonsClient.unknownOriginalGrassColorSet.add(originalGrassColor);
+                    RealSeasonsClient.LOGGER.error("[Real Seasons]: Biome with grass color {} was not in the mapping. Please add it in.", originalGrassColor);
                 }
                 int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, config);
                 int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, config);
@@ -50,8 +53,9 @@ public class SeasonColorManager {
     public static int getGrassBiomeSeason(String biomeId, float yearProgressCoefficient, GrassColorMapConfig config) {
         int seasonIndex = getSeasonIndex(yearProgressCoefficient);
 
-        if (!config.biomeIdToSeasonArrayMap.containsKey(biomeId)) {
-            System.out.println(biomeId + " was not in the seasonsGrassConfig. Please add it in");
+        if (!config.biomeIdToSeasonArrayMap.containsKey(biomeId) && !RealSeasonsClient.unknownBiomeIdsSet.contains(biomeId)) {
+            RealSeasonsClient.unknownBiomeIdsSet.add(biomeId);
+            RealSeasonsClient.LOGGER.error("[Real Seasons]: {} was not in the seasonsGrassConfig. Please add it in", biomeId);
         }
         return config.biomeIdToSeasonArrayMap.getOrDefault(biomeId, new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF})[seasonIndex];
     }
@@ -104,7 +108,7 @@ public class SeasonColorManager {
     }
 
     public static int getFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, FoliageColorMapConfig config) {
-        float yearProgressCoefficient = getYearProgress();
+        float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
 
