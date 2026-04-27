@@ -12,4 +12,5 @@ public class FoliageConfigEntry {
     public String[] mangrove;
     public String[] paleOak;
     public String[] azalea;
+    public String[] grass;
 }

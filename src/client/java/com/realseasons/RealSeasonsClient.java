@@ -40,9 +40,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 			throw new UnsupportedOperationException("Year length and subdivision configs will cause too frequent of a reload.");
 		}
 
-		GrassColorMapConfig grassConfig = generateGrassColorMapConfig();
-
-		FoliageColorMapConfig foliageConfig = generateFoliageColorMapConfig();
+		ColorMapConfig foliageConfig = generateColorMapConfig();
 
 		// 🌿 GRASS
 		BlockColorRegistry.register(List.of(new BlockTintSource() {
@@ -54,7 +52,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 				@Override
 				public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
 					try {
-						return SeasonColorManager.getBlendedGrassColor(level, pos, grassConfig);
+						return SeasonColorManager.getBlendedGrassColor(level, pos, foliageConfig.defaultGrassColorToBiomeGroupMap, foliageConfig.blockTypeToBiomeSeasonMap.get("grass"));
 					} catch (Exception e) {
 						return 0xFFFF00FF; // Obvious magenta color to make issue visible
 					}
@@ -109,49 +107,9 @@ public class RealSeasonsClient implements ClientModInitializer {
 		);
 	}
 
-	private GrassColorMapConfig generateGrassColorMapConfig() {
+	private ColorMapConfig generateColorMapConfig() {
 		InputStream stream = RealSeasonsClient.class.getResourceAsStream(
-				"/assets/real-seasons/seasonsGrassConfig.json"
-		);
-		Reader reader = new InputStreamReader(stream);
-
-		Gson gson = new Gson();
-
-		// parse array
-		List<GrassConfigEntry> entries = gson.fromJson(
-				reader,
-				new TypeToken<List<GrassConfigEntry>>() {}.getType()
-		);
-
-		// convert to your structure
-		GrassColorMapConfig config = new GrassColorMapConfig();
-		config.defaultGrassColorToBiomeGroupMap = new HashMap<>();
-		config.biomeIdToSeasonArrayMap = new HashMap<>();
-
-		for (GrassConfigEntry entry : entries) {
-
-			// biome -> seasonal colors
-			config.biomeIdToSeasonArrayMap.put(
-					entry.biomeId,
-					Arrays.stream(entry.seasonColors)
-							.mapToInt(Integer::decode)
-							.toArray()
-			);
-
-			// optional default color -> biome group
-			if (entry.defaultDecimalColor != null) {
-				config.defaultGrassColorToBiomeGroupMap.put(
-						entry.defaultDecimalColor,
-						entry.biomeId
-				);
-			}
-		}
-		return config;
-	}
-
-	private FoliageColorMapConfig generateFoliageColorMapConfig() {
-		InputStream stream = RealSeasonsClient.class.getResourceAsStream(
-				"/assets/real-seasons/seasonsLeafConfig.json"
+				"/assets/real-seasons/seasonsConfig.json"
 		);
 		Reader reader = new InputStreamReader(stream);
 
@@ -164,7 +122,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 		);
 
 		// convert to your structure
-		FoliageColorMapConfig config = new FoliageColorMapConfig();
+		ColorMapConfig config = new ColorMapConfig();
 		config.defaultGrassColorToBiomeGroupMap = new HashMap<>();
 		config.blockTypeToBiomeSeasonMap = new HashMap<>();
 
@@ -251,6 +209,15 @@ public class RealSeasonsClient implements ClientModInitializer {
 							.toArray()
 			);
 			config.blockTypeToBiomeSeasonMap.put("azalea", azaleaHashMap);
+
+			HashMap<String, int[]> grassHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("grass", new HashMap<>());
+			grassHashMap.put(
+					entry.biomeId,
+					Arrays.stream(entry.grass)
+							.mapToInt(Integer::decode)
+							.toArray()
+			);
+			config.blockTypeToBiomeSeasonMap.put("grass", grassHashMap);
 
 
 			// optional default color -> biome group

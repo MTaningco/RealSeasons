@@ -7,6 +7,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.BlockPos;
 
+import java.util.Map;
+
 import static com.realseasons.RealSeasonsClient.currentInGameYearProgress;
 import static com.realseasons.RealSeasonsClient.isGameDays;
 import static com.realseasons.SeasonUtil.getSeasonIndex;
@@ -14,7 +16,7 @@ import static com.realseasons.SeasonUtil.getRealYearProgress;
 
 public class SeasonColorManager {
 
-    public static int getGrassColor(BlockAndTintGetter world, BlockPos pos, GrassColorMapConfig config) throws Exception {
+    public static int getGrassColor(BlockAndTintGetter world, BlockPos pos, Map<Integer, String> defaultGrassColorToBiomeGroupMap, Map<String, int[]> biomeIdToSeasonArrayMap) throws Exception {
         float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
@@ -22,13 +24,13 @@ public class SeasonColorManager {
         if (entry == null) {
             return world.getBlockTint(pos, (biome, x1, z) -> {
                 int originalGrassColor = biome.getGrassColor(x1, z);
-                String biomeId = config.defaultGrassColorToBiomeGroupMap.get(originalGrassColor);
-                if (config.defaultGrassColorToBiomeGroupMap.get(originalGrassColor) == null && !RealSeasonsClient.unknownOriginalGrassColorSet.contains(originalGrassColor)) {
+                String biomeId = defaultGrassColorToBiomeGroupMap.get(originalGrassColor);
+                if (defaultGrassColorToBiomeGroupMap.get(originalGrassColor) == null && !RealSeasonsClient.unknownOriginalGrassColorSet.contains(originalGrassColor)) {
                     RealSeasonsClient.unknownOriginalGrassColorSet.add(originalGrassColor);
                     RealSeasonsClient.LOGGER.error("[Real Seasons]: Biome with grass color {} was not in the mapping. Please add it in.", originalGrassColor);
                 }
-                int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, config);
-                int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, config);
+                int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, biomeIdToSeasonArrayMap);
+                int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, biomeIdToSeasonArrayMap);
 
                 float scaled = yearProgressCoefficient * 4;
                 int index = (int) scaled;
@@ -40,8 +42,8 @@ public class SeasonColorManager {
 
         String biomeId = entry.getRegisteredName();
 
-        int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, config);
-        int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, config);
+        int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, biomeIdToSeasonArrayMap);
+        int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, biomeIdToSeasonArrayMap);
 
         float scaled = yearProgressCoefficient * 4;
         int index = (int) scaled;
@@ -50,17 +52,17 @@ public class SeasonColorManager {
         return lerpColor(leftSeason, rightSeason, localT);
     }
 
-    public static int getGrassBiomeSeason(String biomeId, float yearProgressCoefficient, GrassColorMapConfig config) {
+    public static int getGrassBiomeSeason(String biomeId, float yearProgressCoefficient, Map<String, int[]> biomeIdToSeasonArrayMap) {
         int seasonIndex = getSeasonIndex(yearProgressCoefficient);
 
-        if (!config.biomeIdToSeasonArrayMap.containsKey(biomeId) && !RealSeasonsClient.unknownBiomeIdsSet.contains(biomeId)) {
+        if (!biomeIdToSeasonArrayMap.containsKey(biomeId) && !RealSeasonsClient.unknownBiomeIdsSet.contains(biomeId)) {
             RealSeasonsClient.unknownBiomeIdsSet.add(biomeId);
             RealSeasonsClient.LOGGER.error("[Real Seasons]: {} was not in the seasonsGrassConfig. Please add it in", biomeId);
         }
-        return config.biomeIdToSeasonArrayMap.getOrDefault(biomeId, new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF})[seasonIndex];
+        return biomeIdToSeasonArrayMap.getOrDefault(biomeId, new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF})[seasonIndex];
     }
 
-    public static int getBlendedGrassColor(BlockAndTintGetter world, BlockPos pos, GrassColorMapConfig config) throws Exception {
+    public static int getBlendedGrassColor(BlockAndTintGetter world, BlockPos pos, Map<Integer, String> defaultGrassColorToBiomeGroupMap, Map<String, int[]> biomeIdToSeasonArrayMap) throws Exception {
 
         int radius = 2; // same idea as vanilla
         int r = 0, g = 0, b = 0;
@@ -71,7 +73,7 @@ public class SeasonColorManager {
 
                 BlockPos samplePos = pos.offset(dx, 0, dz);
 
-                int color = getGrassColor(world, samplePos, config);
+                int color = getGrassColor(world, samplePos, defaultGrassColorToBiomeGroupMap, biomeIdToSeasonArrayMap);
 
                 r += (color >> 16) & 0xFF;
                 g += (color >> 8) & 0xFF;
@@ -84,7 +86,7 @@ public class SeasonColorManager {
         return (0xFF << 24) | (r / count << 16) | (g / count << 8) | (b / count); // FF prefixed to handle transparency
     }
 
-    public static int getBlendedFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, FoliageColorMapConfig config) {
+    public static int getBlendedFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, ColorMapConfig config) {
         int radius = 2; // same idea as vanilla
         int r = 0, g = 0, b = 0;
         int count = 0;
@@ -107,7 +109,7 @@ public class SeasonColorManager {
         return (0xFF << 24) | (r / count << 16) | (g / count << 8) | (b / count); // FF prefixed to handle transparency
     }
 
-    public static int getFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, FoliageColorMapConfig config) {
+    public static int getFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, ColorMapConfig config) {
         float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
@@ -139,7 +141,7 @@ public class SeasonColorManager {
         return lerpColor(leftSeason, rightSeason, localT);
     }
 
-    public static int getFoliageBiomeSeason(String biomeId, BlockState state, float yearProgressCoefficient, FoliageColorMapConfig config) {
+    public static int getFoliageBiomeSeason(String biomeId, BlockState state, float yearProgressCoefficient, ColorMapConfig config) {
         int seasonIndex = getSeasonIndex(yearProgressCoefficient);
         int[] defaultArray = new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF};
 
