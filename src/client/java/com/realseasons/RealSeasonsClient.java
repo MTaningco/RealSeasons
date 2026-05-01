@@ -23,7 +23,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 	public static final boolean isGameDays = false;
 	public static final int subdivisionsPerSeason = 3;
-	public static final int yearLength = 12;
+	public static final int yearLength = 60;
 
 	public static final int MIN_SUBDIVISION_LENGTH = 5;
 	public static final String MOD_ID = "real-seasons";
