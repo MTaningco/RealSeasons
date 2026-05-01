@@ -36,8 +36,13 @@ public class RealSeasonsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		if (isGameDays && (yearLength / (subdivisionsPerSeason * 4)) < MIN_SUBDIVISION_LENGTH) {
-			RealSeasonsClient.LOGGER.error("[Real Seasons]: Current year length and subdivisions per season configs imply subdivision length of less than 5 days. Please change configs such that a subdivision is more than or equal to 5 days.", new UnsupportedOperationException());
+			RealSeasonsClient.LOGGER.error("[Real Seasons]: Current year length and subdivisions per season configs imply subdivision length of less than 5 in game days. Please change configs such that a subdivision is more than or equal to 5 days.", new UnsupportedOperationException());
 			throw new UnsupportedOperationException("Year length and subdivision configs will cause too frequent of a reload.");
+		}
+
+		if (subdivisionsPerSeason < 1) {
+			RealSeasonsClient.LOGGER.error("[Real Seasons]: Subdivisions per seasons config must be 1 or greater.", new UnsupportedOperationException());
+			throw new UnsupportedOperationException("Subdivisions per seasons config must be 1 or greater.");
 		}
 
 		ColorMapConfig foliageConfig = generateColorMapConfig();
