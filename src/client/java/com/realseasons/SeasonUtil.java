@@ -11,14 +11,6 @@ public class SeasonUtil {
         float yearProgress = day / (float) total;
 
         return getSkewedYearProgress(yearProgress);
-        /*
-         * Offset of 0.67 is added to emulate better alignment of seasons to real life
-         * 0.0f => Spring
-         * 0.25f => Summer
-         * 0.5f => Fall
-         * 0.75f => Winter
-         * */
-//        return (day / (float) total) + 0.67f;
     }
 
     /**
@@ -31,7 +23,7 @@ public class SeasonUtil {
         if (yearProgress1 > 0.27 && yearProgress1 <= 0.4) {
             return (float)(-7.2182 * Math.pow(yearProgress1, 3) + 2.1143 * Math.pow(yearProgress1, 2) + 2.6595 * yearProgress1 -0.73012);
         } else if (yearProgress1 > 0.4 && yearProgress1 <= 0.54) {
-            return (float)(16.132 * Math.pow(yearProgress1, 3) + - 25.906 * Math.pow(yearProgress1, 2) + 13.867 * yearProgress1 - 2.2245);
+            return (float)(16.132 * Math.pow(yearProgress1, 3) - 25.906 * Math.pow(yearProgress1, 2) + 13.867 * yearProgress1 - 2.2245);
         } else if (yearProgress1 > 0.54 && yearProgress1 <= 0.78) {
             return (float)(9.8771 * Math.pow(yearProgress1, 3) - 15.773 * Math.pow(yearProgress1, 2) + 8.396 * yearProgress1 - 1.2397);
         } else if (yearProgress1 > 0.78 && yearProgress1 <= 0.83) {
@@ -43,7 +35,7 @@ public class SeasonUtil {
         } else if (yearProgress1 > 1.08 && yearProgress1 <= 1.2) {
             return (float)(28.962 * Math.pow(yearProgress1, 3) - 93.381 * Math.pow(yearProgress1, 2) + 100.72 * yearProgress1 - 35.593);
         } else {
-            return (float)(-69.596 * Math.pow(yearProgress1, 3) + 261.42 * Math.pow(yearProgress1, 2) + - 325.03 * yearProgress1 + 134.71);
+            return (float)(-69.593 * Math.pow(yearProgress1, 3) + 261.42 * Math.pow(yearProgress1, 2) - 325.03 * yearProgress1 + 134.7);
         }
     }
 
