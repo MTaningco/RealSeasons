@@ -10,14 +10,13 @@ import net.minecraft.core.BlockPos;
 import java.util.Map;
 
 import static com.realseasons.RealSeasonsClient.currentInGameYearProgress;
-import static com.realseasons.RealSeasonsClient.isGameDays;
 import static com.realseasons.SeasonUtil.getSeasonIndex;
 import static com.realseasons.SeasonUtil.getRealYearProgress;
 
 public class SeasonColorManager {
 
     public static int getGrassColor(BlockAndTintGetter world, BlockPos pos, Map<Integer, String> defaultGrassColorToBiomeGroupMap, Map<String, int[]> biomeIdToSeasonArrayMap) throws Exception {
-        float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
+        float yearProgressCoefficient = !RealSeasonsConfig.HANDLER.instance().isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
 
@@ -110,7 +109,7 @@ public class SeasonColorManager {
     }
 
     public static int getFoliageColor(BlockAndTintGetter world, BlockPos pos, BlockState state, ColorMapConfig config) {
-        float yearProgressCoefficient = !isGameDays ? getRealYearProgress() : currentInGameYearProgress;
+        float yearProgressCoefficient = !RealSeasonsConfig.HANDLER.instance().isGameDays ? getRealYearProgress() : currentInGameYearProgress;
 
         Holder<Biome> entry = world.getBiomeFabric(pos);
 

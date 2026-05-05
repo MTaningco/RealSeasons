@@ -21,11 +21,6 @@ import java.util.*;
 
 public class RealSeasonsClient implements ClientModInitializer {
 
-	public static final boolean isGameDays = false;
-	public static final int subdivisionsPerSeason = 3;
-	public static final int yearLength = 60;
-
-	public static final int MIN_SUBDIVISION_LENGTH = 5;
 	public static final String MOD_ID = "real-seasons";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final HashSet<Integer> unknownOriginalGrassColorSet = new HashSet<>();
@@ -35,12 +30,9 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		if (isGameDays && (yearLength / (subdivisionsPerSeason * 4)) < MIN_SUBDIVISION_LENGTH) {
-			RealSeasonsClient.LOGGER.error("[Real Seasons]: Current year length and subdivisions per season configs imply subdivision length of less than 5 in game days. Please change configs such that a subdivision is more than or equal to 5 days.", new UnsupportedOperationException());
-			throw new UnsupportedOperationException("Year length and subdivision configs will cause too frequent of a reload.");
-		}
+		RealSeasonsConfig.HANDLER.save(); // creates a config if none is present
 
-		if (subdivisionsPerSeason < 1) {
+		if (RealSeasonsConfig.HANDLER.instance().subdivisionsPerSeason < 1) {
 			RealSeasonsClient.LOGGER.error("[Real Seasons]: Subdivisions per seasons config must be 1 or greater.", new UnsupportedOperationException());
 			throw new UnsupportedOperationException("Subdivisions per seasons config must be 1 or greater.");
 		}
@@ -74,9 +66,10 @@ public class RealSeasonsClient implements ClientModInitializer {
 			Blocks.BUSH
 		);
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (isGameDays && client.level != null) {
+            if (RealSeasonsConfig.HANDLER.instance().isGameDays && client.level != null) {
                 long currentTicks = client.level.getOverworldClockTime();
-				float currentClampedYearProgress = SeasonUtil.getClampedInGameYearProgress(currentTicks, subdivisionsPerSeason, yearLength);
+				int yearLength = RealSeasonsConfig.HANDLER.instance().subdivisionLength * RealSeasonsConfig.HANDLER.instance().subdivisionsPerSeason * 4;
+				float currentClampedYearProgress = SeasonUtil.getClampedInGameYearProgress(currentTicks, RealSeasonsConfig.HANDLER.instance().subdivisionsPerSeason, yearLength);
                 if (currentInGameYearProgress != currentClampedYearProgress) {
                     currentInGameYearProgress = currentClampedYearProgress;
                     Minecraft.getInstance().levelRenderer.allChanged();
