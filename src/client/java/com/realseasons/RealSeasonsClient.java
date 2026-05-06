@@ -30,7 +30,9 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		RealSeasonsConfig.HANDLER.save(); // creates a config if none is present
+		if (!RealSeasonsConfig.HANDLER.load()) {
+			RealSeasonsConfig.HANDLER.save(); // creates a config if none is present
+		}
 
 		if (RealSeasonsConfig.HANDLER.instance().subdivisionsPerSeason < 1) {
 			RealSeasonsClient.LOGGER.error("[Real Seasons]: Subdivisions per seasons config must be 1 or greater.", new UnsupportedOperationException());
