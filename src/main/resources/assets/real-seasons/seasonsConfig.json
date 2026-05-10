@@ -225,7 +225,7 @@
   },
   {
     "biomeId": "minecraft:dark_forest",
-    "defaultDecimalColor": 5274162,
+    "defaultDecimalColor": -11503054,
     "oak": ["0x66BB44", "0x3FAF2A", "0xff6a2f", "0x8B5A2B"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0xFFFF00", "0x81B844", "0xFFDB00", "0x665026"],

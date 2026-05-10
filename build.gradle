@@ -25,6 +25,13 @@ repositories {
 		name = "Terraformers"
 		url = "https://maven.terraformersmc.com/"
 	}
+
+	// DH Requirement
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
+
 }
 
 loom {
@@ -49,6 +56,7 @@ dependencies {
 
 	implementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 	implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	implementation "maven.modrinth:DistantHorizonsApi:${project.distant_horizons_api}"
 }
 
 processResources {

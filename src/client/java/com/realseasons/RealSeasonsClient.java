@@ -2,6 +2,7 @@ package com.realseasons;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.seibel.distanthorizons.api.DhApi;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
@@ -26,7 +27,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 	public static final HashSet<Integer> unknownOriginalGrassColorSet = new HashSet<>();
 	public static final HashSet<String> unknownBiomeIdsSet = new HashSet<>();
 
-	public static float currentInGameYearProgress = 0f;
+	public static float currentInGameYearProgress;
 
 	@Override
 	public void onInitializeClient() {
@@ -53,6 +54,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 					try {
 						return SeasonColorManager.getBlendedGrassColor(level, pos, foliageConfig.defaultGrassColorToBiomeGroupMap, foliageConfig.blockTypeToBiomeSeasonMap.get("grass"));
 					} catch (Exception e) {
+						LOGGER.error(e.getMessage());
 						return 0xFFFF00FF; // Obvious magenta color to make issue visible
 					}
 				}
@@ -74,6 +76,11 @@ public class RealSeasonsClient implements ClientModInitializer {
 				float currentClampedYearProgress = SeasonUtil.getClampedInGameYearProgress(currentTicks, RealSeasonsConfig.HANDLER.instance().subdivisionsPerSeason, yearLength);
                 if (currentInGameYearProgress != currentClampedYearProgress) {
                     currentInGameYearProgress = currentClampedYearProgress;
+					try {
+						DhApi.Delayed.renderProxy.clearRenderDataCache();
+					} catch (NoClassDefFoundError e) {
+						LOGGER.warn("Distant Horizons is probably not being used. If it is, please let the developer know.");
+					}
                     Minecraft.getInstance().levelRenderer.allChanged();
                 }
             }
@@ -91,6 +98,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 					try {
 						return SeasonColorManager.getBlendedFoliageColor(level, pos, state, foliageConfig);
 					} catch (Exception e) {
+						LOGGER.error(e.getMessage());
 						return 0xFFFF00FF; // Obvious magenta color to make issue visible
 					}
 				}
