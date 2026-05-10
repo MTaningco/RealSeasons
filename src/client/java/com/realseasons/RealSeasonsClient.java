@@ -40,6 +40,11 @@ public class RealSeasonsClient implements ClientModInitializer {
 			throw new UnsupportedOperationException("Subdivisions per seasons config must be 1 or greater.");
 		}
 
+		if (RealSeasonsConfig.HANDLER.instance().seasonPhaseOffset < 0 || RealSeasonsConfig.HANDLER.instance().seasonPhaseOffset >= 360) {
+			RealSeasonsClient.LOGGER.error("[Real Seasons]: Season phase angle config must be between 0 to 359 degrees.", new UnsupportedOperationException());
+			throw new UnsupportedOperationException("Season phase angle config must be between 0 to 359 degrees.");
+		}
+
 		ColorMapConfig foliageConfig = generateColorMapConfig();
 
 		// 🌿 GRASS

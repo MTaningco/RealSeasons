@@ -24,4 +24,7 @@ public class RealSeasonsConfig {
     @SerialEntry(comment = "Defines how long a subdivision is in game days.")
     public int subdivisionLength = 5;
 
+    @SerialEntry(comment = "Defines how much of a phase offset the seasons should be compared to the Northern Hemisphere. Ex. 0 degrees starts in Spring, 90 degrees starts in Summer, 180 degrees starts in Fall, 270 degrees starts in Winter.")
+    public int seasonPhaseOffset = 0;
+
 }

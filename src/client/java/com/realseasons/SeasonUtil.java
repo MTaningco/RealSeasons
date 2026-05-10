@@ -8,7 +8,7 @@ public class SeasonUtil {
         LocalDate now = LocalDate.now();
         int day = now.getDayOfYear();
         int total = now.lengthOfYear();
-        float yearProgress = day / (float) total;
+        float yearProgress = ((day + RealSeasonsConfig.HANDLER.instance().seasonPhaseOffset / 360.0f * total) % total) / (float) total;
 
         return getSkewedYearProgress(yearProgress);
     }
@@ -41,7 +41,7 @@ public class SeasonUtil {
 
     public static float getClampedInGameYearProgress(long worldTime, int subdivisionsPerSeason, int yearLength) {
         int totalSubdivisions = subdivisionsPerSeason * 4;
-        float inGameYearProgress = (((float) worldTime / 24000L) % yearLength) / yearLength;
+        float inGameYearProgress = (((float) worldTime / 24000L + RealSeasonsConfig.HANDLER.instance().seasonPhaseOffset / 360.0f * yearLength) % yearLength) / yearLength;
         int currentCalculatedSubdivision = (int) (inGameYearProgress * totalSubdivisions);
         return getSkewedYearProgress(((float) currentCalculatedSubdivision / totalSubdivisions) + (float) 0.27);
     }
