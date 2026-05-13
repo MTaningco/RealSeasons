@@ -197,7 +197,6 @@
   },
   {
     "biomeId": "minecraft:desert",
-    "defaultDecimalColor": -4212907,
     "oak": ["0xAEA42A", "0xF6DB6A", "0xF3E664", "0x89AE36"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
@@ -371,6 +370,7 @@
   },
   {
     "biomeId": "minecraft:savanna",
+    "defaultDecimalColor": -4212907,
     "oak": ["0x9E814D", "0xCAAA74", "0xCADD74", "0x5A814D"],
     "spruce": ["0xB5C78B", "0x786646", "0xB5C78B", "0x5CC78B"],
     "birch": ["0xB6A755", "0xF2E191", "0xB6A755", "0x80A755"],
