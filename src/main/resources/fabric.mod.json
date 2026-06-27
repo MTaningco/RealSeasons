@@ -3,9 +3,9 @@
 	"id": "real-seasons",
 	"version": "1.0.0",
 	"name": "Real Seasons",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A lightweight seasons mod focussed on world colors without altering the core Minecraft experience.",
 	"authors": [
-		"Me!"
+		"DiggyMiggy"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -33,10 +33,10 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "26.1.x",
+		"fabricloader": ">=0.19.3",
+		"minecraft": "26.2.x",
 		"java": ">=25",
 		"fabric-api": "*",
-		"yet_another_config_lib_v3": ">=3.9.3+26.1-fabric"
+		"yet_another_config_lib_v3": ">=3.9.4+26.2-fabric"
 	}
 }

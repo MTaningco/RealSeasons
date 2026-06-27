@@ -86,7 +86,7 @@ public class RealSeasonsClient implements ClientModInitializer {
 					} catch (NoClassDefFoundError e) {
 						LOGGER.warn("Distant Horizons is probably not being used. If it is, please let the developer know.");
 					}
-                    Minecraft.getInstance().levelRenderer.allChanged();
+					Minecraft.getInstance().levelExtractor.allChanged();
                 }
             }
         });
