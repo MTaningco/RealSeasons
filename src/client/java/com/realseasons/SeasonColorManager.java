@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 
 import java.util.Map;
 
+import static com.realseasons.RealSeasonsClient.LOGGER;
 import static com.realseasons.RealSeasonsClient.currentInGameYearProgress;
 import static com.realseasons.SeasonUtil.getSeasonIndex;
 import static com.realseasons.SeasonUtil.getRealYearProgress;
@@ -26,7 +27,7 @@ public class SeasonColorManager {
                 String biomeId = defaultGrassColorToBiomeGroupMap.get(originalGrassColor);
                 if (defaultGrassColorToBiomeGroupMap.get(originalGrassColor) == null && !RealSeasonsClient.unknownOriginalGrassColorSet.contains(originalGrassColor)) {
                     RealSeasonsClient.unknownOriginalGrassColorSet.add(originalGrassColor);
-                    RealSeasonsClient.LOGGER.error("[Real Seasons]: Biome with grass color {} was not in the mapping. Please add it in.", originalGrassColor);
+                    LOGGER.error("[Real Seasons]: Biome with grass color {} was not in the mapping. Please add it in.", originalGrassColor);
                 }
                 int leftSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient, biomeIdToSeasonArrayMap);
                 int rightSeason = getGrassBiomeSeason(biomeId, yearProgressCoefficient + 0.25f, biomeIdToSeasonArrayMap);
@@ -56,7 +57,7 @@ public class SeasonColorManager {
 
         if (!biomeIdToSeasonArrayMap.containsKey(biomeId) && !RealSeasonsClient.unknownBiomeIdsSet.contains(biomeId)) {
             RealSeasonsClient.unknownBiomeIdsSet.add(biomeId);
-            RealSeasonsClient.LOGGER.error("[Real Seasons]: {} was not in the seasonsGrassConfig. Please add it in", biomeId);
+            LOGGER.error("[Real Seasons]: {} was not in the seasonsGrassConfig. Please add it in", biomeId);
         }
         return biomeIdToSeasonArrayMap.getOrDefault(biomeId, new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF})[seasonIndex];
     }
