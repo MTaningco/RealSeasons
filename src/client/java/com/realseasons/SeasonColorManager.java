@@ -145,7 +145,7 @@ public class SeasonColorManager {
         int seasonIndex = getSeasonIndex(yearProgressCoefficient);
         int[] defaultArray = new int[]{0x0000FF, 0x0000FF, 0x0000FF, 0x0000FF};
 
-        if((state.is(Blocks.OAK_LEAVES) || state.is(Blocks.VINE)) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
+        if(state.is(Blocks.OAK_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("oak")) {
             return config.blockTypeToBiomeSeasonMap.get("oak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
@@ -157,7 +157,7 @@ public class SeasonColorManager {
             return config.blockTypeToBiomeSeasonMap.get("birch").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.is(Blocks.JUNGLE_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("jungle")) {
+        if((state.is(Blocks.JUNGLE_LEAVES) || state.is(Blocks.VINE)) && config.blockTypeToBiomeSeasonMap.containsKey("jungle")) {
             return config.blockTypeToBiomeSeasonMap.get("jungle").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
