@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "minecraft:block/flowering_azalea",
+    "tints": [
+      {
+        "type": "constant",
+        "value": 10014819
+      }
+    ]
+  }
+}

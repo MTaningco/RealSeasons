@@ -177,7 +177,7 @@ public class SeasonColorManager {
             return config.blockTypeToBiomeSeasonMap.get("paleOak").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
-        if(state.is(Blocks.AZALEA_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("azalea")) {
+        if((state.is(Blocks.AZALEA_LEAVES) || state.is(Blocks.FLOWERING_AZALEA_LEAVES) || state.is(Blocks.FLOWERING_AZALEA) || state.is(Blocks.AZALEA)) && config.blockTypeToBiomeSeasonMap.containsKey("azalea")) {
             return config.blockTypeToBiomeSeasonMap.get("azalea").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 

@@ -47,7 +47,6 @@ public class RealSeasonsClient implements ClientModInitializer {
 
 		ColorMapConfig foliageConfig = generateColorMapConfig();
 
-		// 🌿 GRASS
 		BlockColorRegistry.register(List.of(new BlockTintSource() {
 				@Override
 				public int color(BlockState state) {
@@ -116,7 +115,11 @@ public class RealSeasonsClient implements ClientModInitializer {
 			Blocks.ACACIA_LEAVES,
 			Blocks.DARK_OAK_LEAVES,
 			Blocks.PALE_OAK_LEAVES,
-			Blocks.MANGROVE_LEAVES
+			Blocks.MANGROVE_LEAVES,
+			Blocks.AZALEA_LEAVES,
+			Blocks.FLOWERING_AZALEA_LEAVES,
+			Blocks.AZALEA,
+			Blocks.FLOWERING_AZALEA
 		);
 	}
 
