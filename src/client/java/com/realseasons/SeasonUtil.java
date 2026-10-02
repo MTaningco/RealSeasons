@@ -19,7 +19,7 @@ public class SeasonUtil {
      * @return
      */
     private static float getSkewedYearProgress(float yearProgress) {
-        boolean isDev = false;
+        boolean isDev = true;
         float yearProgress1 = yearProgress < (float) 0.27 ? yearProgress + (float) 1.0 : yearProgress;
         if (isDev) {
             return yearProgress;
@@ -43,7 +43,7 @@ public class SeasonUtil {
     }
 
     public static float getClampedInGameYearProgress(long worldTime, int subdivisionsPerSeason, int yearLength) {
-        boolean isDev = false;
+        boolean isDev = true;
         int totalSubdivisions = subdivisionsPerSeason * 4;
         float inGameYearProgress = (((float) worldTime / 24000L + RealSeasonsConfig.HANDLER.instance().seasonPhaseOffset / 360.0f * yearLength) % yearLength) / yearLength;
         int currentCalculatedSubdivision = (int) (inGameYearProgress * totalSubdivisions);
