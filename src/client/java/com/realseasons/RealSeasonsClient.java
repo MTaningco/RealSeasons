@@ -5,11 +5,13 @@ import com.google.gson.Gson;
 import com.seibel.distanthorizons.api.DhApi;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.slf4j.Logger;
@@ -119,8 +121,21 @@ public class RealSeasonsClient implements ClientModInitializer {
 			Blocks.AZALEA_LEAVES,
 			Blocks.FLOWERING_AZALEA_LEAVES,
 			Blocks.AZALEA,
-			Blocks.FLOWERING_AZALEA
+			Blocks.FLOWERING_AZALEA,
+			Blocks.RED_POPLAR_LEAVES,
+			Blocks.ORANGE_POPLAR_LEAVES,
+			Blocks.YELLOW_POPLAR_LEAVES
 		);
+
+		ParticleProviderRegistry.getInstance().register(
+				ParticleTypes.RED_POPLAR_LEAVES,
+				(spriteSet) -> new TintedLeavesFactory.TintedLeavesProvider(spriteSet, foliageConfig, Blocks.RED_POPLAR_LEAVES));
+		ParticleProviderRegistry.getInstance().register(
+				ParticleTypes.ORANGE_POPLAR_LEAVES,
+				(spriteSet) -> new TintedLeavesFactory.TintedLeavesProvider(spriteSet, foliageConfig, Blocks.ORANGE_POPLAR_LEAVES));
+		ParticleProviderRegistry.getInstance().register(
+				ParticleTypes.YELLOW_POPLAR_LEAVES,
+				(spriteSet) -> new TintedLeavesFactory.TintedLeavesProvider(spriteSet, foliageConfig, Blocks.YELLOW_POPLAR_LEAVES));
 	}
 
 	private ColorMapConfig generateColorMapConfig() {
@@ -234,6 +249,33 @@ public class RealSeasonsClient implements ClientModInitializer {
 							.toArray()
 			);
 			config.blockTypeToBiomeSeasonMap.put("grass", grassHashMap);
+
+			HashMap<String, int[]> redPoplarHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("redPoplar", new HashMap<>());
+			redPoplarHashMap.put(
+					entry.biomeId,
+					Arrays.stream(entry.redPoplar)
+							.mapToInt(Integer::decode)
+							.toArray()
+			);
+			config.blockTypeToBiomeSeasonMap.put("redPoplar", redPoplarHashMap);
+
+			HashMap<String, int[]> orangePoplarHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("orangePoplar", new HashMap<>());
+			orangePoplarHashMap.put(
+					entry.biomeId,
+					Arrays.stream(entry.orangePoplar)
+							.mapToInt(Integer::decode)
+							.toArray()
+			);
+			config.blockTypeToBiomeSeasonMap.put("orangePoplar", orangePoplarHashMap);
+
+			HashMap<String, int[]> yellowPoplarHashMap = config.blockTypeToBiomeSeasonMap.getOrDefault("yellowPoplar", new HashMap<>());
+			yellowPoplarHashMap.put(
+					entry.biomeId,
+					Arrays.stream(entry.yellowPoplar)
+							.mapToInt(Integer::decode)
+							.toArray()
+			);
+			config.blockTypeToBiomeSeasonMap.put("yellowPoplar", yellowPoplarHashMap);
 
 
 			// optional default color -> biome group

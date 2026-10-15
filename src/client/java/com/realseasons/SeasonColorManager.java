@@ -181,6 +181,18 @@ public class SeasonColorManager {
             return config.blockTypeToBiomeSeasonMap.get("azalea").getOrDefault(biomeId, defaultArray)[seasonIndex];
         }
 
+        if(state.is(Blocks.RED_POPLAR_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("redPoplar")) {
+            return config.blockTypeToBiomeSeasonMap.get("redPoplar").getOrDefault(biomeId, defaultArray)[seasonIndex];
+        }
+
+        if(state.is(Blocks.ORANGE_POPLAR_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("orangePoplar")) {
+            return config.blockTypeToBiomeSeasonMap.get("orangePoplar").getOrDefault(biomeId, defaultArray)[seasonIndex];
+        }
+
+        if(state.is(Blocks.YELLOW_POPLAR_LEAVES) && config.blockTypeToBiomeSeasonMap.containsKey("yellowPoplar")) {
+            return config.blockTypeToBiomeSeasonMap.get("yellowPoplar").getOrDefault(biomeId, defaultArray)[seasonIndex];
+        }
+
         return defaultArray[seasonIndex];
     }
 
