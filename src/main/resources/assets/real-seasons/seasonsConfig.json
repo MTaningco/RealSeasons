@@ -560,6 +560,7 @@
   },
   {
     "biomeId": "minecraft:dappled_forest",
+    "defaultDecimalColor": -2136025,
     "oak": ["0x49f02a", "0x3faf2a", "0x8F1A36", "0x8b7662"],
     "spruce": ["0x2A5535", "0x5CC78B", "0x5CA78B", "0x9FECCD"],
     "birch": ["0x5af923", "0x80f655", "0xffff00", "0x8b7662"],
@@ -884,6 +885,7 @@
   },
   {
     "biomeId": "minecraft:sulfur_caves",
+    "defaultDecimalColor": -5527985,
     "oak": ["0xba9d5f", "0xba9d5f", "0xba9d5f", "0xba9d5f"],
     "spruce": ["0xba9d5f", "0xba9d5f", "0xba9d5f", "0xba9d5f"],
     "birch": ["0xba9d5f", "0xba9d5f", "0xba9d5f", "0xba9d5f"],
